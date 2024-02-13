@@ -6,8 +6,8 @@
   <title>in da works</title>
   <style>
     body {
-      background-color: #e9a811; /* Lakers yellow color */
-      color: rgb(40, 40, 41); /* Text color */
+      background-color: rgb(2, 0, 0); /* Lakers yellow color */
+      color: rgb(255, 255, 255); /* Text color */
       font-family: 'Times New Roman', Times, serif; /* Helvetica font */
       margin: 0; /* Remove default body margin */
       padding: 0; /* Remove default body padding */
@@ -16,31 +16,95 @@
     h1 {
       text-align: center; /* Center the text */
       padding: 20px; /* Add some padding to the heading */
+      margin: 0;
     }
     h2 {
       text-align: center; /* Center the text */
-      /* padding: 20px; Add some padding to the heading */
+      margin: 0;
+    }
+    h4 {
+      text-align: center; /* Center the text */
+      padding: 0; /* Add some padding to the heading */
+      margin:0;
     }
 
     p {
-    color: rgb(40, 40, 41); /* Black text color for paragraphs */
-    padding: 40px;
+    color: rgb(255, 255, 255); /* Black text color for paragraphs */
+    padding: 20px;
     text-align: left;
+    font-size: 20px;
   }
+    .work-experience {
+      margin-bottom: 20px;
+    }
+    .job-title {
+      /* font-weight: bold; */
+      margin: 0;
+      margin-bottom: 0;
+    }
+    .job-details {
+      margin-left: 20px;
+    }
+
+    .centered {
+      text-align: center;
+    }
+
+    .container {
+      position: relative; /* Position the container relative to its parent */
+      display: inline-block; /* Display the container as an inline block */
+    }
+    .image {
+      display: block; /* Display the image as a block element */
+      width: 1440px;
+    }
+    .text {
+      position: absolute; /* Position the text relative to the container */
+      top: 0; /*Position the text at the top*/
+      left: 550px; /* Adjust left value to position the text next to the image */
+      color: rgb(255, 255, 255); /* Set text color */
+      /* background-color: rgba(0, 0, 0, 0.5); Set background color with transparency */
+      padding: 5px; /* Add padding to the text */
+    }
+    
   </style>
 </head>
 <body>
-  <h1>Nikhil Kuppa</h1>
-  <h2>MS Biomedical Engineering, Columbia University</h2>
-  <h2>BTech Electronics and Communication Engineering, Manipal Institute of Technology</h2>
+  <div class="container">
+    <!-- <img class="image" src="/Users/nikhilkuppa/Downloads/IMG_1303.jpg" alt="Your Image"> -->
 
-  <p>i like everything concerned with physiological signals n medical data science. visit my linkedin <a href="https://www.linkedin.com/in/nikhilkuppa/">here</a>!</p>
+    <img class="image" src="https://i.insider.com/5e0bbdec855cc2746e2742c2?width=1200&format=jpeg" alt="Your Image">
+    <div class="text"><h1>Nikhil Kumar Kuppa</h1></div>
+  </div>
+
+  <!-- <h1><u>Nikhil Kumar Kuppa</u></h1> -->
+  <h4>MS Biomedical Engineering, Columbia University</h4>
+  <h4>BTech Electronics and Communication Engineering, Manipal Institute of Technology</h4>
+
+  <p class="centered">i like everything concerning physiological signals n medical data science. check my linkedin out <a href="https://www.linkedin.com/in/nikhilkuppa/">here</a>!</p>
   
-  <!-- <ul>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-  </ul> -->
+  <h2><u>Work Experience</u></h2>
+
+  <div class="work-experience">
+    <p> <b>Biomedical Engineering Intern - </b> AuraSense Tech Corporation, Newark, NJ [Nov 2023 – Present]</p>
+      <ul>
+        <li>Building a deep-learned motion-robust rPPG signal tracking model.</li>
+        <li>Independently simulating real-time biomedical signals (EKG, EEG, PPG, EDA) in MATLAB with perturbations for realistic visualization.</li>
+        <li>Developing a dynamic model which simulates data changes in correlation with human activities.</li>
+        <li>Conducted a comprehensive evaluation of competitor start-ups and synthesized a tech-summary for strategic insights.</li>
+      </ul>
+  </div>
+
+  <div class="work-experience">
+    <p> <b>Research Assistant Under Dr. Andrew Laine - </b> Heffner Biomedical Imaging Laboratory, Columbia University, New York, NY [June 2023 – Feb 2024]</p>
+      <ul>
+        <li>Executed the “Hidden Markov Measure-Field” (HMMF) algorithm on the MESA dataset to quantify pulmonary emphysema.</li>
+        <li>Executing the HMMF algorithm on the SPIROMICS and SARP datasets to perform longitudinal analysis.</li>
+        <li>Validated results via Bland-Altman analysis, computed relevant Hounsfield Unit metrics, and documented the QC code.</li>
+      </ul>
+  </div>
+  
+
 </body>
 </html>
 
