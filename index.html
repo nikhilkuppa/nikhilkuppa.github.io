@@ -1,111 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>in da works</title>
-  <style>
-    body {
-      background-color: rgb(2, 0, 0); /* Lakers yellow color */
-      color: rgb(255, 255, 255); /* Text color */
-      font-family: 'Times New Roman', Times, serif; /* Helvetica font */
-      margin: 0; /* Remove default body margin */
-      padding: 0; /* Remove default body padding */
-    }
-
-    h1 {
-      text-align: center; /* Center the text */
-      padding: 20px; /* Add some padding to the heading */
-      margin: 0;
-    }
-    h2 {
-      text-align: center; /* Center the text */
-      margin: 0;
-    }
-    h4 {
-      text-align: center; /* Center the text */
-      padding: 0; /* Add some padding to the heading */
-      margin:0;
-    }
-
-    p {
-    color: rgb(255, 255, 255); /* Black text color for paragraphs */
-    padding: 20px;
-    text-align: left;
-    font-size: 20px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikhil Kuppa — ML & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080610;
+    --bg2: #0e0b1a;
+    --bg3: #150f24;
+    --purple: #8c56bf;
+    --purple-dim: rgba(140,86,191,0.15);
+    --purple-glow: rgba(140,86,191,0.35);
+    --gold: #e6a715;
+    --gold-dim: rgba(230,167,21,0.12);
+    --white: #f5f3ff;
+    --muted: #7a728f;
+    --muted2: #3e3852;
+    --line: rgba(140,86,191,0.1);
+    --line2: rgba(140,86,191,0.2);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
   }
-    .work-experience {
-      margin-bottom: 20px;
-    }
-    .job-title {
-      /* font-weight: bold; */
-      margin: 0;
-      margin-bottom: 0;
-    }
-    .job-details {
-      margin-left: 20px;
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-    .centered {
-      text-align: center;
-    }
+  /* GRID LINES — purple tinted */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    .container {
-      position: relative; /* Position the container relative to its parent */
-      display: inline-block; /* Display the container as an inline block */
-    }
-    .image {
-      display: block; /* Display the image as a block element */
-      width: 1440px;
-    }
-    .text {
-      position: absolute; /* Position the text relative to the container */
-      top: 0; /*Position the text at the top*/
-      left: 550px; /* Adjust left value to position the text next to the image */
-      color: rgb(255, 255, 255); /* Set text color */
-      /* background-color: rgba(0, 0, 0, 0.5); Set background color with transparency */
-      padding: 5px; /* Add padding to the text */
-    }
-    
-  </style>
+  /* subtle purple radial glow at top */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(140,86,191,0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(8,6,16,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(56px, 9vw, 120px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--purple);
+  }
+  .hero-desc {
+    max-width: 580px;
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-desc strong { color: var(--white); font-weight: 500; }
+  .hero-links {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 1px solid var(--line2);
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn:hover { border-color: var(--purple); color: var(--purple); }
+  .btn-gold { background: var(--gold); color: #080610; border-color: var(--gold); font-weight: 500; }
+  .btn-gold:hover { background: transparent; color: var(--gold); }
+  .btn-purple { border-color: var(--purple); color: var(--purple); }
+  .btn-purple:hover { background: var(--purple-dim); }
+
+  /* lakers badge */
+  .lakers-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    border: 1px solid rgba(230,167,21,0.3);
+    padding: 6px 14px;
+    background: rgba(230,167,21,0.07);
+    letter-spacing: 0.08em;
+  }
+  .lakers-badge::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    right: 48px;
+    bottom: 80px;
+    writing-mode: vertical-rl;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted2);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s forwards;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: var(--muted2);
+  }
+
+  /* SECTION LAYOUT */
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--purple);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line2);
+  }
+
+  /* ABOUT */
+  #about { border-bottom: 1px solid var(--line); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .about-text p strong { color: var(--white); font-weight: 500; }
+  .about-text .gold { color: var(--gold); }
+  .about-text .purple { color: var(--purple); }
+
+  /* lakers callout */
+  .lakers-callout {
+    margin-top: 28px;
+    padding: 20px 24px;
+    border-left: 3px solid var(--gold);
+    background: var(--gold-dim);
+  }
+  .lakers-callout p {
+    color: var(--muted) !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+  .lakers-callout p strong { color: var(--gold) !important; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .stat {
+    background: var(--bg);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+  .stat:hover { background: var(--bg3); }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 8px;
+    color: var(--gold);
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .edu-band {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: 1px;
+  }
+  .edu-item { background: var(--bg); padding: 28px; }
+  .edu-degree { font-family: var(--serif); font-size: 18px; margin-bottom: 6px; }
+  .edu-school {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .edu-detail { font-family: var(--mono); font-size: 11px; color: var(--muted2); }
+
+  /* SKILLS */
+  #skills { border-bottom: 1px solid var(--line); background: var(--bg2); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .skill-cat { background: var(--bg2); padding: 32px 28px; transition: background 0.2s; }
+  .skill-cat:hover { background: var(--bg3); }
+  .skill-cat-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border: 1px solid var(--line2);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    transition: all 0.15s;
+  }
+  .tag:hover { border-color: var(--purple); color: var(--white); background: var(--purple-dim); }
+
+  /* EXPERIENCE */
+  #experience { border-bottom: 1px solid var(--line); }
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+    transition: padding 0.2s, background 0.2s;
+  }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-item:hover { background: var(--bg3); margin: 0 -48px; padding: 48px 48px; }
+  .exp-company { font-family: var(--serif); font-size: 20px; margin-bottom: 6px; line-height: 1.2; }
+  .exp-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .exp-date { font-family: var(--mono); font-size: 11px; color: var(--muted2); }
+  .exp-location { font-family: var(--mono); font-size: 11px; color: var(--muted2); margin-top: 4px; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 7px 0 7px 20px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .exp-bullets li:last-child { border-bottom: none; }
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--muted2);
+    font-family: var(--mono);
+    font-size: 11px;
+    top: 10px;
+  }
+
+  /* PROJECTS */
+  #projects { border-bottom: 1px solid var(--line); background: var(--bg2); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .project-card {
+    background: var(--bg2);
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+  .project-card:hover { background: var(--bg3); }
+  .project-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    margin-bottom: 14px;
+    letter-spacing: 0.1em;
+  }
+  .project-title { font-family: var(--serif); font-size: 22px; line-height: 1.2; margin-bottom: 14px; }
+  .project-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tech-pill {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--bg3);
+    border: 1px solid var(--line2);
+    color: var(--muted2);
+    letter-spacing: 0.04em;
+  }
+
+  /* PUBLICATIONS */
+  #publications { border-bottom: 1px solid var(--line); }
+  .pub-list { display: flex; flex-direction: column; }
+  .pub-item {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .pub-item:last-child { border-bottom: none; }
+  .pub-year { font-family: var(--mono); font-size: 12px; color: var(--muted2); padding-top: 4px; }
+  .pub-title { font-family: var(--serif); font-size: 19px; line-height: 1.3; margin-bottom: 8px; }
+  .pub-authors { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .pub-venue {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .pub-badge {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 10px;
+    padding: 2px 8px;
+    background: rgba(230,167,21,0.1);
+    border: 1px solid rgba(230,167,21,0.3);
+    color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  /* ACHIEVEMENTS */
+  #achievements { border-bottom: 1px solid var(--line); background: var(--bg2); }
+  .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .ach-item { background: var(--bg2); padding: 36px 28px; transition: background 0.2s; }
+  .ach-item:hover { background: var(--bg3); }
+  .ach-icon { font-family: var(--serif); font-size: 28px; color: var(--gold); margin-bottom: 16px; }
+  .ach-title { font-family: var(--serif); font-size: 18px; line-height: 1.3; margin-bottom: 10px; }
+  .ach-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* CONTACT */
+  #contact { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; }
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+  }
+  .contact-heading em { font-style: italic; color: var(--purple); }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 24px;
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--purple); background: var(--purple-dim); }
+  .contact-link-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    min-width: 80px;
+  }
+  .contact-link-value { font-size: 14px; color: var(--muted); }
+  .contact-link:hover .contact-link-value { color: var(--white); }
+  .contact-link-arrow { margin-left: auto; font-family: var(--mono); font-size: 16px; color: var(--muted2); transition: transform 0.2s, color 0.2s; }
+  .contact-link:hover .contact-link-arrow { transform: translate(4px, -4px); color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  footer span { font-family: var(--mono); font-size: 11px; color: var(--muted2); letter-spacing: 0.06em; }
+  footer .footer-lakers { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <!-- <img class="image" src="/Users/nikhilkuppa/Downloads/IMG_1303.jpg" alt="Your Image"> -->
 
-    <img class="image" src="https://i.insider.com/5e0bbdec855cc2746e2742c2?width=1200&format=jpeg" alt="Your Image">
-    <div class="text"><h1>Nikhil Kumar Kuppa</h1></div>
+<nav>
+  <a href="#hero" class="nav-logo">NK — Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">ML &amp; AI Engineer · New York, NY</div>
+  <h1 class="hero-name">Nikhil<br><em>Kuppa</em></h1>
+  <p class="hero-desc">Building AI systems at the intersection of biomedical signals, deep learning, and production engineering. MS Columbia. </strong> Based in New York.</p>
+  <div class="hero-links">
+    <a href="mailto:nkk2126@columbia.edu" class="btn btn-gold">Get in touch</a>
+    <a href="https://linkedin.com/in/nikhilkuppa" target="_blank" class="btn btn-purple">LinkedIn</a>
+    <a href="https://github.com/nikhilkuppa" target="_blank" class="btn">GitHub</a>
   </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
 
-  <!-- <h1><u>Nikhil Kumar Kuppa</u></h1> -->
-  <h4>MS Biomedical Engineering, Columbia University</h4>
-  <h4>BTech Electronics and Communication Engineering, Manipal Institute of Technology</h4>
-
-  <p class="centered">i like everything concerning physiological signals n medical data science. check my linkedin out <a href="https://www.linkedin.com/in/nikhilkuppa/">here</a>!</p>
-  
-  <h2><u>Work Experience</u></h2>
-
-  <div class="work-experience">
-    <p> <b>Biomedical Engineering Intern - </b> AuraSense Tech Corporation, Newark, NJ [Nov 2023 – Present]</p>
-      <ul>
-        <li>Building a deep-learned motion-robust rPPG signal tracking model.</li>
-        <li>Independently simulating real-time biomedical signals (EKG, EEG, PPG, EDA) in MATLAB with perturbations for realistic visualization.</li>
-        <li>Developing a dynamic model which simulates data changes in correlation with human activities.</li>
-        <li>Conducted a comprehensive evaluation of competitor start-ups and synthesized a tech-summary for strategic insights.</li>
-      </ul>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">01 — About</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a <strong>Machine Learning and AI Engineer</strong> with a master's from Columbia University and 3+ years of experience building AI-driven solutions from research to production.</p>
+        <p>My work spans <strong>physiological signal processing</strong> (ECG, EEG, rPPG), <strong>LLM/GenAI pipelines</strong>, computer vision, and multimodal deep learning — with a sharp focus on shipping things that actually work.</p>
+        <p>Currently at <strong>Novartis Pharmaceuticals</strong> as an Associate Data Scientist building agentic AI systems. Previously at City College of New York's Neural Engineering Lab and Columbia's Biomedical Imaging Lab.</p>
+        <div class="lakers-callout">
+          <p>Off the clock? You'll probably find me watching the <strong>Lakers</strong> — purple and gold runs deep.</p>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <!-- <div class="stat">
+            <div class="stat-num">3.88</div>
+            <div class="stat-label">Columbia GPA</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">140K+</div>
+            <div class="stat-label">Videos Processed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">99%</div>
+            <div class="stat-label">Time Saved @ Novartis</div>
+          </div> -->
+        </div>
+        <div class="edu-band">
+          <div class="edu-item">
+            <div class="edu-school">Columbia University</div>
+            <div class="edu-degree">MS Biomedical Eng.</div>
+            <div class="edu-detail">GPA 3.88/4 · Dec 2023</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-school">Manipal University</div>
+            <div class="edu-degree">B.Tech ECE</div>
+            <div class="edu-detail">GPA 8.38/10 · Jul 2022</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="work-experience">
-    <p> <b>Research Assistant Under Dr. Andrew Laine - </b> Heffner Biomedical Imaging Laboratory, Columbia University, New York, NY [June 2023 – Feb 2024]</p>
-      <ul>
-        <li>Executed the “Hidden Markov Measure-Field” (HMMF) algorithm on the MESA dataset to quantify pulmonary emphysema.</li>
-        <li>Executing the HMMF algorithm on the SPIROMICS and SARP datasets to perform longitudinal analysis.</li>
-        <li>Validated results via Bland-Altman analysis, computed relevant Hounsfield Unit metrics, and documented the QC code.</li>
-      </ul>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">02 — Skills</div>
+    <div class="skills-grid reveal">
+      <div class="skill-cat">
+        <div class="skill-cat-title">Languages &amp; Tools</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">R</span><span class="tag">SQL</span><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">AWS Bedrock</span><span class="tag">GCP</span><span class="tag">Claude Code</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Specializations</div>
+        <div class="skill-tags">
+          <span class="tag">Deep Learning</span><span class="tag">Machine Learning</span><span class="tag">Signal Processing</span><span class="tag">Image Processing</span><span class="tag">Computer Vision</span><span class="tag">NLP</span><span class="tag">LLMs</span><span class="tag">Statistical Analysis</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Modalities</div>
+        <div class="skill-tags">
+          <span class="tag">ECG</span><span class="tag">EEG</span><span class="tag">EMG</span><span class="tag">EOG</span><span class="tag">rPPG</span><span class="tag">PCG</span><span class="tag">EDA</span><span class="tag">MRI</span><span class="tag">CT</span><span class="tag">Eyetracking</span><span class="tag">Respiratory</span><span class="tag">ADAM</span>
+        </div>
+      </div>
+    </div>
   </div>
-  
+</section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">03 — Experience</div>
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Novartis Pharmaceuticals</div>
+          <div class="exp-role">Associate Data Scientist · Agentic AI</div>
+          <div class="exp-date">Nov 2025 — Present</div>
+          <div class="exp-location">New York, NY</div>
+          <div style="margin-top:8px;font-family:var(--mono);font-size:10px;color:var(--muted2);">via Abacus Service Corporation</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Refining, evaluating and enhancing Claude Code skill commands to ensure deterministic code generation for a table-creation pipeline.</li>
+          <li>Built a multi-agent RAG system with an agentic R code stitcher to fast-track table-creation for Clinical Study Reports, integrating SAPs, table shells, and historical code — reducing manual effort by 99.17% with an 85% success rate.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Neural Engineering Lab, CCNY</div>
+          <div class="exp-role">Research AI Engineer</div>
+          <div class="exp-date">Aug 2024 — Jul 2025</div>
+          <div class="exp-location">New York, NY</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Architected a GenAI system using LLMs on 140,000+ educational videos to classify learning principles via video files, transcripts and text embeddings. Scaled via parallelization, used interactive visualizations to validate.</li>
+          <li>Engineered BIDS-compliant biomedical datasets (ECG, EEG, EOG, respiratory, eye-tracking) and deployed them on an interactive Flask web app. Conducted statistical analyses to identify trends and anomalies.</li>
+          <li>Built real-time EEG analysis system with movie playback integration and processed large-scale video datasets with facial/pose landmark overlays using memory-efficient software architectures.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Sleepiz USA LLC</div>
+          <div class="exp-role">Intern · Digital Health ML</div>
+          <div class="exp-date">Sept 2024 — Apr 2025</div>
+          <div class="exp-location">New York, NY</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed a novel algorithm to detect false R-peaks in ECG, extracted respiratory metrics &amp; enabled simultaneous visualization analysis.</li>
+          <li>Quantified camera shakes using Computer Vision algorithms to digitize video recordings for capnography measurements.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">AuraSense Tech</div>
+          <div class="exp-role">Intern · Signal Processing &amp; ML</div>
+          <div class="exp-date">Nov 2023 — Jul 2024</div>
+          <div class="exp-location">Newark, NJ</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built and deployed to production a real-time rPPG signal tracking / HR estimating Computer Vision model using signal processing.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Biomedical Imaging Lab, Columbia</div>
+          <div class="exp-role">Research Engineer · Medical Imaging</div>
+          <div class="exp-date">Jun 2023 — Feb 2024</div>
+          <div class="exp-location">New York, NY</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Quantified emphysema using Hidden Markov Measure-Field algorithm on 3 Lung CT datasets and performed longitudinal analysis.</li>
+          <li>Validated results via Bland-Altman analysis, computed CT Hounsfield Unit metrics and documented QC code.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-company">Fourth Frontier Technologies</div>
+          <div class="exp-role">Intern · Digital Health Data &amp; ML</div>
+          <div class="exp-date">Jan 2022 — Jul 2022</div>
+          <div class="exp-location">Bangalore, India</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Overhauled workout activity insights by introducing a dynamic ranking system; facilitated code deployment to production via AWS.</li>
+          <li>Led development and shipped cardiac-based workout training insights (Heart Rate Zones) in collaboration with an MD.</li>
+          <li>Engineered an extensive dataset of ECG and cardiac features for 2500+ users, with the goal of predicting cardiac age.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">04 — Projects</div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-num">01</div>
+        <div class="project-title">Non-Contact Vital Signs &amp; Jaundice Detection</div>
+        <div class="project-desc">Production rPPG API estimating HR, HRV, RR, and BP from raw webcam video using dual algorithms (CHROM &amp; POS), Welch's PSD, and MediaPipe Face Mesh. Benchmarked 15 ML models for sclera-based jaundice detection (AUC 0.73, recall 0.79) on a 1,200-sample dataset. Reduced API memory ~10×.</div>
+        <div class="project-tech">
+          <span class="tech-pill">rPPG</span><span class="tech-pill">MediaPipe</span><span class="tech-pill">Welch's PSD</span><span class="tech-pill">GaussianNB</span><span class="tech-pill">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">02</div>
+        <div class="project-title">Drug Recommendation Application</div>
+        <div class="project-desc">Full-stack healthcare app with real-time personalized OTC drug recommendations. AI pipeline leveraging Gemini + RAG over 10,000+ MedlinePlus records, medication tracker, geolocation search, OAuth, Redis queues, and Supabase integration.</div>
+        <div class="project-tech">
+          <span class="tech-pill">Flask</span><span class="tech-pill">React</span><span class="tech-pill">Gemini</span><span class="tech-pill">RAG</span><span class="tech-pill">Redis</span><span class="tech-pill">Supabase</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">03</div>
+        <div class="project-title">PCG Heart Sound Classifier</div>
+        <div class="project-desc">Multi-stage ML classification pipeline using Wavelet Transform, achieving 0.97 AUC. Segmented S1/S2 heart sounds with wavelet-based peak detection and deployed end-to-end with Docker/Nginx for real-time murmur detection via smartphone mic.</div>
+        <div class="project-tech">
+          <span class="tech-pill">Wavelet Transform</span><span class="tech-pill">Docker</span><span class="tech-pill">Nginx</span><span class="tech-pill">0.97 AUC</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">04</div>
+        <div class="project-title">Brain-Controlled VR Game</div>
+        <div class="project-desc">Brain-computer interface using EEG (Motor Imagery + SSVEP) and EMG signals to trigger real-time actions. Applied CSP filtering, SVM and LSTM models for signal decoding, achieving 64% accuracy. 3rd place at NeuroVR Hackathon, Columbia.</div>
+        <div class="project-tech">
+          <span class="tech-pill">EEG</span><span class="tech-pill">EMG</span><span class="tech-pill">CSP</span><span class="tech-pill">LSTM</span><span class="tech-pill">SVM</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">05</div>
+        <div class="project-title">MRI Image Reconstruction</div>
+        <div class="project-desc">Resolved phase loss issue in TorchIO, enabling complete image reconstruction from k-space. Augmented motion artifacts to a motion-free MRI dataset. Trained and evaluated AFT-Net reconstruction algorithm on this data.</div>
+        <div class="project-tech">
+          <span class="tech-pill">TorchIO</span><span class="tech-pill">AFT-Net</span><span class="tech-pill">k-space</span><span class="tech-pill">MRI</span><span class="tech-pill">PyTorch</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-label">05 — Research</div>
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2025</div>
+        <div>
+          <div class="pub-title">The Brain, Body, and Behavior Dataset (BBBD): Multimodal Recordings during Educational Videos</div>
+          <div class="pub-authors">Madsen, J., <strong>Kuppa, N.</strong>, &amp; Parra, L.</div>
+          <div class="pub-venue">Nature Scientific Data <span class="pub-badge">Under Review</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">TBD</div>
+        <div>
+          <div class="pub-title">Education-Attention Trap: Do viral videos ever teach what students need — A NeuroSci Approach</div>
+          <div class="pub-authors"><strong>Kuppa, N.</strong>, Madsen, J., &amp; Parra, L.</div>
+          <div class="pub-venue">In Works</div>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">TBD</div>
+        <div>
+          <div class="pub-title">The Speed-Comprehension Tradeoff in Online Video Communication — YouTube Stats</div>
+          <div class="pub-authors"><strong>Kuppa, N.</strong>, Sudhir, K., Parra, L., &amp; Madsen, J.</div>
+          <div class="pub-venue">In Works</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-label">06 — Achievements</div>
+    <div class="ach-grid">
+      <div class="ach-item reveal">
+        <div class="ach-icon">#3</div>
+        <div class="ach-title">NeuroVR Hackathon</div>
+        <div class="ach-desc">3rd Place for Brain-Controlled VR Game at Columbia University's NeuroVR Hackathon — EEG/EMG real-time BCI.</div>
+      </div>
+      <div class="ach-item reveal">
+        <div class="ach-icon">◈</div>
+        <div class="ach-title">Columbia Venture Competition</div>
+        <div class="ach-desc">Semifinalist with a pitch for the 'Sinusitis Relief Mask' — a consumer digital health device concept.</div>
+      </div>
+      <div class="ach-item reveal">
+        <div class="ach-icon">✦</div>
+        <div class="ach-title">Nature Scientific Data</div>
+        <div class="ach-desc">Co-author on the BBBD dataset paper currently under review — multimodal biomedical recordings across 140K+ educational videos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="section-label">07 — Contact</div>
+      <!-- <h2 class="contact-heading">Let's build<br><em>something</em><br>together.</h2> -->
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:nkk2126@columbia.edu" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">nkk2126@columbia.edu</span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
+      <a href="https://linkedin.com/in/nikhilkuppa" target="_blank" class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-value">linkedin.com/in/nikhilkuppa</span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
+      <a href="https://github.com/nikhilkuppa" target="_blank" class="contact-link">
+        <span class="contact-link-label">GitHub</span>
+        <span class="contact-link-value">github.com/nikhilkuppa</span>
+        <span class="contact-link-arrow">↗</span>
+      </a>
+      <div class="contact-link" style="cursor:default;">
+        <span class="contact-link-label">Location</span>
+        <span class="contact-link-value">New York, NY · Open to remote</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Nikhil Kuppa · ML &amp; AI Engineer</span>
+  <span class="footer-lakers"> New York, NY · 2025 </span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
-
-
