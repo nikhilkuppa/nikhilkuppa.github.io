@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Nikhil Kuppa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <nav class="site">
+      <a class="brand" href="index.html">Nikhil Kuppa</a>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="work.html" class="active">Work</a>
+        <a href="education.html">Education</a>
+        <a href="photography.html">Photography</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Work</h1>
+    <p class="lede muted">Research, industry, and a few things built for fun.</p>
+
+    <div class="tab-row" role="tablist">
+      <button class="tab-btn active" data-tab="experience" role="tab" aria-selected="true">Experience</button>
+      <button class="tab-btn" data-tab="projects" role="tab" aria-selected="false">Projects</button>
+      <button class="tab-btn" data-tab="publications" role="tab" aria-selected="false">Publications</button>
+    </div>
+
+    <div class="tab-panel" id="tab-experience">
+      <div class="entry reveal edu-entry">
+        <img class="edu-logo" src="assets/logos/novartis-logo.png" alt="Novartis logo">
+        <div>
+          <div class="entry-head">
+            <span class="entry-title">Associate Data Scientist, Agentic AI</span>
+            <span class="entry-meta">Nov 2025 — present</span>
+          </div>
+          <div class="entry-sub">Novartis Pharmaceuticals</div>
+          <ul>
+            <li>Leading an autonomous backend built on Claude Code that automates figure and table generation for Clinical Study Reports (CSRs).</li>
+            <li>Engineered custom skill-creators and evaluation frameworks to keep output Statistical-Analysis-Plan compliant.</li>
+            <li>Built a LangGraph-based agentic RAG pipeline that cut manual report-building time by ~99%.</li>
+            <li>Winner, <a class="inline" href="https://www.cdisc.org/events/ai-innovation-challenge">CDISC AI Innovation Challenge 2026</a> — Use Case 3.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry reveal edu-entry">
+        <img class="edu-logo" src="assets/logos/ccny-logo.png" alt="CCNY logo">
+        <div>
+          <div class="entry-head">
+            <span class="entry-title">Research Engineer, Applied AI (Multimodal Data)</span>
+            <span class="entry-meta">Aug 2024 — Jul 2025</span>
+          </div>
+          <div class="entry-sub">Parra Neural Engineering Lab, CCNY</div>
+          <ul>
+            <li>Built a generative-AI pipeline over 140,000+ educational videos to detect learning principles from transcripts and embeddings.</li>
+            <li>Engineered the BIDS-compliant Brain, Body & Behavior Dataset (ECG, EEG, EOG, respiration, eye-tracking).</li>
+            <li>Shipped the dataset as an interactive Flask app — published in <em>Nature Scientific Data</em>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry reveal edu-entry">
+        <img class="edu-logo" src="assets/logos/columbia-bme-logo.png" alt="Columbia Biomedical Engineering logo">
+        <div>
+          <div class="entry-head">
+            <span class="entry-title">Research Engineer, Medical Image Analysis</span>
+            <span class="entry-meta">Jun 2023 — Feb 2024</span>
+          </div>
+          <div class="entry-sub">Heffner Biomedical Imaging Lab, Columbia</div>
+          <ul>
+            <li>Ran a Hidden Markov Measure-Field algorithm across longitudinal lung CT datasets to quantify emphysema.</li>
+            <li>Validated results against Bland-Altman analysis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry reveal edu-entry">
+        <img class="edu-logo" src="assets/logos/ff-logo.png" alt="Fourth Frontier logo">
+        <div>
+          <div class="entry-head">
+            <span class="entry-title">Intern, Digital Health Data Engineering &amp; ML</span>
+            <span class="entry-meta">Jan 2022 — Jul 2022</span>
+          </div>
+          <div class="entry-sub">Fourth Frontier Technologies</div>
+          <ul>
+            <li>Shipped <a class="inline" href="https://fourthfrontier.com/pages/heart-rate-zones">cardiac-based Heart Rate Zone training insights</a> with an MD.</li>
+            <li>Built an ECG/cardiac feature dataset across 2,500+ users aimed at predicting cardiac age.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-projects" hidden>
+      <div class="entry reveal">
+        <div class="entry-head">
+          <span class="entry-title">LeBrain</span>
+          <span class="entry-meta accent">3rd place, NeuroVR Hackathon</span>
+        </div>
+        <p>A brain-computer interface that plays a VR game with your brain and nothing else. Motor imagery + SSVEP from EEG, plus EMG, decoded with CSP filtering, SVM and LSTM models into real-time in-game actions. <a class="inline" href="https://devpost.com/software/lebrain">Devpost</a></p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-title">Non-Contact Vitals Tracking (rPPG)</div>
+        <p>Production-grade API estimating heart rate, HRV, respiration rate, and blood pressure from plain webcam video — CHROM &amp; POS algorithms, Welch's PSD, MediaPipe face mesh, and a 32-feature pulse-wave model. Also benchmarked 15 ML models for sclera-based jaundice detection. Voluntary prototype work for <a class="inline" href="https://www.wiseai.care/">WiseAI</a>.</p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-title">Heart Sound Classifier</div>
+        <p>Wavelet-based S1/S2 segmentation and classification of phonocardiogram recordings (0.97 AUC), deployed end-to-end so a phone mic can flag a heart murmur.</p>
+      </div>
+
+      <div class="entry reveal">
+        <div class="entry-title">MRI Motion Correction</div>
+        <p>Fixed a phase-loss bug in TorchIO to enable full k-space reconstruction, used it to simulate motion artifacts on a motion-free dataset, and trained AFT-Net to correct them. Unpublished — <a class="inline" href="assets/mri-motion-correction-paper.pdf">write-up (PDF)</a> &middot; <a class="inline" href="assets/mri-motion-correction-presentation.pdf">presentation (PDF)</a>.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-publications" hidden>
+      <p class="muted" style="font-size:14px; margin-bottom:20px;">Full list on <a class="inline" href="https://scholar.google.com/citations?user=C9WDNPoAAAAJ&hl=en">Google Scholar</a></p>
+      <div class="entry reveal">
+        <p>Madsen, J., <strong>Kuppa, N.</strong>, &amp; Parra, L. (2026). <em>The Brain, Body, and Behavior Dataset (BBBD): Multimodal Recordings during Educational Videos.</em> Nature Scientific Data. <a class="inline" href="https://www.nature.com/articles/s41597-026-07215-1">Paper</a> &middot; <a class="inline" href="https://bbbd.pythonanywhere.com/">Dataset site</a></p>
+
+        <div class="fig-row">
+          <figure class="fig reveal">
+            <img src="assets/bbbd-setup.png" alt="Diagram of the recording setup: EEG, EOG, gaze, respiration and ECG sensors on a participant watching a monitor">
+            <figcaption>Fig. 1 — recording setup</figcaption>
+          </figure>
+          <figure class="fig fig-dark reveal">
+            <img src="assets/bbbd-signals.png" alt="Dashboard showing raw and derived physiological signals (ECG, gaze, pupil, head position, heart rate, breath rate) for one session">
+            <figcaption>Raw vs. derived signals, one session</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="entry reveal">
+        <p class="muted"><strong>Kuppa, N.</strong>, Adler, M., Madsen, J., &amp; Parra, L. C. (in prep). <em>The Attention Trap in Online Education Videos: Multi-study Assessment to Understand Alignment between Instructional Design, Viewership and Learning Outcomes.</em></p>
+      </div>
+      <div class="entry reveal">
+        <p class="muted">Sudhir, K., <strong>Kuppa, N.</strong>, Parra, L. C., &amp; Madsen, J. (in prep). <em>The Attention-Retention Tradeoff: How Accelerating Online Media Shapes Learning.</em></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="script.js" defer></script>
+
+<footer class="site">
+  <div class="wrap">
+    New York, NY — <a href="mailto:nkk2126@columbia.edu">nkk2126@columbia.edu</a>
+  </div>
+</footer>
+
+</body>
+</html>
