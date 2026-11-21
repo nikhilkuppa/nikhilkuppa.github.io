@@ -24,12 +24,18 @@
   .skill { margin:0 0 2px; }
   @media (max-width: 640px) { .page { padding:20px 16px; font-size:15px; } .entry { flex-direction:column; gap:0; } .when { white-space:normal; } }
   @media print {
-    @page { size: letter; margin: 0.45in 0.65in; }
-    body { background:#fff; font-size:10.5pt; line-height:1.22; }
+    @page { size: letter; margin: 0.4in 0.6in; }
+    body { background:#fff; font-size:10pt; line-height:1.18; }
     .bar { display:none; }
-    .page { box-shadow:none; margin:0; padding:0; max-width:none; font-size:10.5pt; }
-    li { margin-bottom:1pt; } h2 { margin-bottom:3pt; } .entry { margin-top:4pt; }
-    h1 { font-size:22pt; } h2 { font-size:11pt; margin-top:6pt; }
+    .page { box-shadow:none; margin:0; padding:0; max-width:none; font-size:10pt; }
+    h1 { font-size:22pt; margin-bottom:1pt; }
+    .contact { margin-bottom:0; }
+    h2 { font-size:9pt; margin:7pt 0 3pt; padding-bottom:2pt; }
+    .entry { margin-top:4pt; }
+    .sub { margin-bottom:1pt; }
+    ul { margin-top:1pt; padding-left:14pt; }
+    li { margin-bottom:1pt; }
+    .skill { margin-bottom:1pt; }
     a { color:var(--link); }
   }
 </style>
