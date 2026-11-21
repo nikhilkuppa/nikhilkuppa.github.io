@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>Nikhil Kuppa — Resume</title>
+<style>
+  :root { --ink:#1b1b1b; --muted:#555; --navy:#1F3A5F; --link:#1F4E9A; --bg:#f4f4f2; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family: Cambria, Georgia, "Times New Roman", serif; line-height:1.4; }
+  .bar { max-width:8.5in; margin:16px auto 0; padding:0 16px; text-align:right; }
+  .bar button { font:inherit; font-size:14px; border:1px solid var(--navy); background:#fff; color:var(--navy); padding:6px 14px; border-radius:4px; cursor:pointer; }
+  .page { max-width:8.5in; margin:12px auto 40px; background:#fff; padding:0.5in 0.65in; box-shadow:0 1px 8px rgba(0,0,0,.12); font-size:14.5px; }
+  h1 { margin:0 0 2px; text-align:center; color:var(--navy); font-size:30px; line-height:1.15; }
+  .contact { text-align:center; margin:0 0 4px; }
+  a { color:var(--link); }
+  h2 { margin:14px 0 5px; padding-bottom:2px; border-bottom:1px solid var(--navy); color:var(--navy); font-size:15px; font-variant:small-caps; letter-spacing:.02em; }
+  .entry { display:flex; justify-content:space-between; gap:12px; margin-top:7px; margin-bottom:2px; }
+  .when { color:var(--muted); white-space:nowrap; }
+  ul { margin:2px 0 0; padding-left:20px; }
+  li { margin-bottom:2px; }
+  .skill { margin:0 0 2px; }
+  @media (max-width: 640px) { .page { padding:20px 16px; font-size:15px; } .entry { flex-direction:column; gap:0; } .when { white-space:normal; } }
+  @media print {
+    @page { size: letter; margin: 0.45in 0.65in; }
+    body { background:#fff; font-size:10pt; }
+    .bar { display:none; }
+    .page { box-shadow:none; margin:0; padding:0; max-width:none; font-size:10pt; }
+    h1 { font-size:22pt; } h2 { font-size:11pt; margin-top:6pt; }
+    a { color:var(--link); }
+  }
+</style>
+</head>
+<body>
+<div class="bar"><button onclick="window.print()">Save as PDF</button></div>
+<main class="page">
+<h1>Nikhil Kuppa</h1>
+<p class="contact">New York, NY &nbsp;•&nbsp; <a href="mailto:nkk2126@columbia.edu">nkk2126@columbia.edu</a> &nbsp;•&nbsp; <a href="https://nikhilkuppa.github.io">nikhilkuppa.github.io</a> &nbsp;•&nbsp; <a href="https://github.com/nikhilkuppa">GitHub</a> &nbsp;•&nbsp; <a href="https://www.linkedin.com/in/nikhilkuppa/">LinkedIn</a></p>
+<h2>Technical Skills</h2>
+<p class="skill"><strong>Languages and ML:</strong> Python, MATLAB, R, SQL, C, JavaScript, PyTorch, TensorFlow, Keras, LangGraph, LangChain, RAG, LLM agents, Claude Code</p>
+<p class="skill"><strong>Systems:</strong> Flask, React, Docker, Nginx, AWS (Lambda, Bedrock), GCP, Redis, Supabase, Git</p>
+<p class="skill"><strong>Data:</strong> EEG, ECG, PPG/rPPG, EMG, MRI, CT, video, audio, text, time series, BIDS, clinical trial data (ADaM)</p>
+<h2>Experience</h2>
+<div class="entry"><span><strong>Novartis Pharmaceuticals (via Abacus)</strong> &nbsp;|&nbsp; <em>Associate Data Scientist, Agentic AI</em></span><span class="when">New York, NY  •  Nov 2025 – Present</span></div>
+<ul>
+<li>Lead the figure-generation pipeline for PAIR, an AI workflow that drafts clinical tables, figures and listings for Clinical Study Reports.</li>
+<li>Contributed to architecting PAIR's table-generation pipeline, validated it across studies, and developed custom <strong>Claude Code</strong> skills for Statistical Analysis Plan alignment. PAIR won first place at the <a href="https://www.cdisc.org/events/ai-innovation-challenge">CDISC AI Innovation Challenge 2026</a>.</li>
+<li>Engineered a <strong>LangGraph agentic RAG</strong> system for clinical study reporting that cut manual report-building time by <strong>~99%</strong> at an <strong>85%</strong> success rate.</li>
+</ul>
+<div class="entry"><span><strong>Parra Neural Engineering Lab, CCNY</strong> &nbsp;|&nbsp; <em>Research Assistant, Applied AI</em></span><span class="when">New York, NY  •  Aug 2024 – Jul 2025</span></div>
+<ul>
+<li>Classified <strong>140,000+</strong> educational videos with <strong>LLMs and text embeddings</strong>, parallelizing the pipeline and checking output with interactive plots.</li>
+<li>Curated a <strong>BIDS-compliant</strong> multimodal dataset (ECG, EEG, EOG, respiration, eye-tracking; 178 participants, ~110 hours), and launched a <strong>Flask</strong> site for access. Published in <a href="https://www.nature.com/articles/s41597-026-07215-1">Nature Scientific Data</a>.</li>
+<li>Created a real-time EEG viewer synced to movie playback, and processed large video sets with face and pose landmarks under tight memory limits.</li>
+</ul>
+<div class="entry"><span><strong>AuraSense Tech Corporation</strong> &nbsp;|&nbsp; <em>Biomedical Engineering Intern</em></span><span class="when">Newark, NJ  •  Nov 2023 – Jul 2024</span></div>
+<ul>
+<li>Developed a motion-robust <strong>rPPG</strong> heart-rate estimator from video, using ROI extraction and signal processing.</li>
+<li>Simulated real-time EKG, EEG, PPG and EDA signals in <strong>MATLAB</strong> with realistic noise.</li>
+</ul>
+<div class="entry"><span><strong>Heffner Biomedical Imaging Lab, Columbia</strong> &nbsp;|&nbsp; <em>Research Engineer</em></span><span class="when">New York, NY  •  Jun 2023 – Feb 2024</span></div>
+<ul>
+<li>Applied a Hidden Markov Measure-Field algorithm to <strong>3 lung CT datasets</strong> to quantify emphysema over time; validated with Bland-Altman analysis and documented the QC code.</li>
+</ul>
+<div class="entry"><span><strong>Fourth Frontier Technologies</strong> &nbsp;|&nbsp; <em>Intern, Data Engineering and ML</em></span><span class="when">Bangalore, India  •  Jan 2022 – Jul 2022</span></div>
+<ul>
+<li>Designed and shipped heart-rate-zone insights with a medical doctor, plus a ranking system for the most relevant ones; deployed to production on <strong>AWS</strong>.</li>
+<li>Compiled an ECG and cardiac feature dataset for <strong>2,500+ users</strong>; trained SpO2 finger-pressure classifiers (77% accuracy).</li>
+</ul>
+<div class="entry"><span><strong>Sleepiz (India)</strong> &nbsp;|&nbsp; <em>Embedded Developer Intern</em></span><span class="when">Pune, India  •  Jun 2021 – Aug 2021</span></div>
+<ul>
+<li>Implemented Fourier-based preprocessing for raw radar sensor data, cutting data volume by <strong>97%</strong>.</li>
+</ul>
+<h2>Projects</h2>
+<ul>
+<li><strong>Camera-based vitals API:</strong> estimates HR, HRV, respiration rate and blood pressure from webcam video (CHROM/POS, MediaPipe); cut API memory ~10x and benchmarked <strong>15 ML models</strong> for jaundice detection. Voluntary prototype for <a href="https://www.wiseai.care/">WiseAI</a>.</li>
+<li><strong>Heart sound classifier:</strong> wavelet segmentation and classification (<strong>0.97 AUC</strong>), deployed with <strong>Docker and Nginx</strong> so a phone mic can flag murmurs.</li>
+<li><strong>Drug recommendation app:</strong> Flask and React with <strong>Gemini + RAG</strong> over 10,000+ MedlinePlus records, Redis job queues, Supabase and OAuth.</li>
+<li><strong>LeBrain</strong> (3rd place, NeuroVR Hackathon): EEG and EMG VR controller decoded in real time with CSP, SVM and LSTM. <a href="https://devpost.com/software/lebrain">Devpost</a></li>
+</ul>
+<h2>Education</h2>
+<div class="entry"><span><strong>Columbia University</strong>, M.S. Biomedical Engineering &nbsp;|&nbsp; GPA 3.88/4</span><span class="when">Dec 2023</span></div>
+<div class="entry"><span><strong>Manipal Institute of Technology</strong>, B.Tech. Electronics and Communication Engineering &nbsp;|&nbsp; GPA 8.38/10</span><span class="when">Jul 2022</span></div>
+</main>
+</body>
+</html>
